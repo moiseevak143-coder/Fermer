@@ -21,6 +21,7 @@ int main() {
     int choice = -1;
     int work_hours = 0;
     int i;
+    int slot_index, item_id;
     
     // Инициализация инвентаря
     int inventory[INVENTORY_SIZE] = {
@@ -85,10 +86,27 @@ int main() {
                 }
                 break;
             case 4:
-                printf("Функция пока не реализована.\n");
+                printf("Введите индекс слота (0-%d): ", INVENTORY_SIZE - 1);
+                while (scanf("%d", &slot_index) != 1 || slot_index < 0 || slot_index >= INVENTORY_SIZE) {
+                    scanf("%*s");
+                    printf("Ошибка ввода. Введите индекс от 0 до %d: ", INVENTORY_SIZE - 1);
+                }
+                printf("Введите ID предмета: ");
+                while (scanf("%d", &item_id) != 1 || item_id < 0) {
+                    scanf("%*s");
+                    printf("Ошибка ввода. Введите положительное число (ID): ");
+                }
+                inventory[slot_index] = item_id;
+                printf("Предмет с ID %d успешно положен в слот %d.\n", item_id, slot_index);
                 break;
             case 5:
-                printf("Функция пока не реализована.\n");
+                printf("Введите индекс слота для очистки (0-%d): ", INVENTORY_SIZE - 1);
+                while (scanf("%d", &slot_index) != 1 || slot_index < 0 || slot_index >= INVENTORY_SIZE) {
+                    scanf("%*s");
+                    printf("Ошибка ввода. Введите индекс от 0 до %d: ", INVENTORY_SIZE - 1);
+                }
+                inventory[slot_index] = ITEM_EMPTY;
+                printf("Слот %d очищен.\n", slot_index);
                 break;
             case 6:
                 printf("Функция пока не реализована.\n");
