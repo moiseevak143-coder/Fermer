@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <windows.h>
 
 #define HOURS_PER_DAY 24
 #define INVENTORY_SIZE 10
@@ -16,6 +17,7 @@
 #define ITEM_FLOWER 9
 
 int main() {
+    SetConsoleOutputCP(65001);
     int current_day = 1;
     int current_hour = 8;
     int choice = -1;
