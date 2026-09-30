@@ -22,6 +22,7 @@ int main() {
     int work_hours = 0;
     int i;
     int slot_index, item_id;
+    int target_id, cleared_count;
     
     // Инициализация инвентаря
     int inventory[INVENTORY_SIZE] = {
@@ -38,7 +39,7 @@ int main() {
         printf("[3] Посмотреть инвентарь\n");
         printf("[4] Положить предмет в слот\n");
         printf("[5] Выбросить предмет\n");
-        printf("[6] Выполнить задание по варианту\n");
+        printf("[6] Очистка от мусора (по ID)\n");
         printf("Выберите пункт меню: ");
         
         while (scanf("%d", &choice) != 1) {
@@ -109,7 +110,19 @@ int main() {
                 printf("Слот %d очищен.\n", slot_index);
                 break;
             case 6:
-                printf("Функция пока не реализована.\n");
+                printf("Введите ID предмета для очистки: ");
+                while (scanf("%d", &target_id) != 1) {
+                    scanf("%*s");
+                    printf("Ошибка ввода. Введите число (ID): ");
+                }
+                cleared_count = 0;
+                for (i = 0; i < INVENTORY_SIZE; i++) {
+                    if (inventory[i] == target_id) {
+                        inventory[i] = ITEM_EMPTY;
+                        cleared_count++;
+                    }
+                }
+                printf("Очищено слотов: %d\n", cleared_count);
                 break;
             default:
                 printf("Неверный пункт меню. Попробуйте снова.\n");
