@@ -1,8 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
+#define HOURS_PER_DAY 24
+
 int main() {
+    int current_day = 1;
+    int current_hour = 8;
     int choice = -1;
+    int work_hours = 0;
     
     while (1) {
         printf("\n--- Меню ---\n");
@@ -25,10 +30,20 @@ int main() {
                 printf("Выход из программы.\n");
                 return 0;
             case 1:
-                printf("Функция пока не реализована.\n");
+                printf("Текущее время: День %d, %02d:00\n", current_day, current_hour);
                 break;
             case 2:
-                printf("Функция пока не реализована.\n");
+                printf("Сколько часов вы хотите поработать? ");
+                while (scanf("%d", &work_hours) != 1 || work_hours < 0) {
+                    scanf("%*s");
+                    printf("Ошибка ввода. Введите положительное число часов: ");
+                }
+                current_hour += work_hours;
+                while (current_hour >= HOURS_PER_DAY) {
+                    current_hour -= HOURS_PER_DAY;
+                    current_day++;
+                }
+                printf("Вы успешно поработали. Текущее время: День %d, %02d:00\n", current_day, current_hour);
                 break;
             case 3:
                 printf("Функция пока не реализована.\n");
