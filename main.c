@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <windows.h>
 
-#define HOURS_PER_DAY 24
+#define HOURS_PER_DAY 24 // кол-во часов в сутках
 #define INVENTORY_SIZE 10
 
 #define ITEM_EMPTY 0
@@ -17,10 +17,10 @@
 #define ITEM_FLOWER 9
 
 int main() {
-    SetConsoleOutputCP(65001);
-    int current_day = 1;
+    SetConsoleOutputCP(65001); // для вывода русских букв
+    int current_day = 1; 
     int current_hour = 8;
-    int choice = -1;
+    int choice; // переменная для хранения выбора пользователя в меню 
     int work_hours = 0;
     int i;
     int slot_index, item_id;
